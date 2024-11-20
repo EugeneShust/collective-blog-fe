@@ -1,26 +1,23 @@
 // Context API pattern: Provides global state and functions for managing posts.
 
 import { createContext, useState } from 'react';
-// import { getPosts } from " "
 
 export const PostsContext = createContext(null);
 
-export function PostsContextProvider() {
-    const [posts, setPosts] = useState();
+export const PostsProvider = ({ children }) => {
+    const [posts, setPosts] = useState([]);
 
-    function savePost(post) {
-        const found = posts.findIndex((el) => el.id === post.id);
-        if ((found = undefined)) {
-            const newPosts = [...posts];
-            newPosts.push(post);
-        }
+    function AddOrUpdatePost(post) {
+        const newPosts = [...posts];
+        const index = posts.findIndex((el) => el.id === post.id);
+
+        if (index === -1) newPosts.push(post);
+        else newPosts[index] = post;
     }
 
-    savePost();
-
     return (
-        <PostsContext.Provider value={{ posts, setPosts }}>
+        <PostsContext.Provider value={{ posts, AddOrUpdatePost }}>
             {children}
         </PostsContext.Provider>
     );
-}
+};

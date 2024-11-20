@@ -3,12 +3,15 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import { MainLayout } from './components';
 import { HomePage, CreatePostPage } from './pages';
+import { PostsProvider } from './contexts';
 
 const router = createBrowserRouter([
     {
         path: '',
         element: (
+            <PostsProvider>
                 <MainLayout />
+            </PostsProvider>
         ),
         children: [
             {
