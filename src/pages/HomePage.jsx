@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '../components'
+import { Button } from '../components';
 
 export function HomePage() {
-// post context
-function handleButton() {
     const navigate = useNavigate();
-    navigate('/create-post');
-}
+    // post context
+    function handleButton() {
+        navigate('/');
+    }
+
     return (
         <>
             <div className="flex flex-row align-baseline justify-end">
@@ -19,8 +20,7 @@ function handleButton() {
                     }
                 />
             </div>
-            <div className="grid grid-cols-3 gap-4">
-            </div>
+            <div className="grid grid-cols-3 gap-4"></div>
         </>
     );
 }
