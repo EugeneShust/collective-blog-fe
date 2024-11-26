@@ -34,9 +34,6 @@ export function Navbar() {
                                 <a className="justify-between">Profile</a>
                             </li>
                             <li>
-                                <a>Settings</a>
-                            </li>
-                            <li>
                                 <a>Logout</a>
                             </li>
                         </ul>
