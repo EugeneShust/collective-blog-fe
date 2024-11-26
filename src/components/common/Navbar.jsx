@@ -5,14 +5,18 @@ export function Navbar() {
         <nav>
             <div className="navbar bg-[#374151]">
                 <div className="flex-1">
-                    <a className="btn btn-ghost text-xl">
-                        the awesome blogpost page
-                    </a>
+                    <Link to="/">
+                        <li className="btn btn-ghost text-xl">
+                            the awesome blogpost page
+                        </li>
+                    </Link>
                 </div>
                 <div className="flex-none gap-4">
-                    <div className="btn btn-ghost text-xl border-2 border-[#caced5]">
-                        New blogpost
-                    </div>
+                    <Link to="/create-post">
+                        <div className="btn btn-ghost text-xl border-2 border-[#caced5]">
+                            New blogpost
+                        </div>
+                    </Link>
                     <div className="dropdown dropdown-end">
                         <div
                             tabIndex={0}
