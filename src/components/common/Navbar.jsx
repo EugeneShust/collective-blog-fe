@@ -5,13 +5,43 @@ export function Navbar() {
         <nav>
             <div className="navbar bg-[#374151]">
                 <div className="flex-1">
-                    <li className="btn btn-ghost border-b-2 border-[#CACED5] text-xl">
-                        <Link to="/" className="text-xl">
-                            /Collective Blog/
-                        </Link>
-                    </li>
+                    <a className="btn btn-ghost text-xl">
+                        the awesome blogpost page
+                    </a>
                 </div>
-                <div className="flex-none gap-2"></div>
+                <div className="flex-none gap-4">
+                    <div className="btn btn-ghost text-xl border-2 border-[#caced5]">
+                        New blogpost
+                    </div>
+                    <div className="dropdown dropdown-end">
+                        <div
+                            tabIndex={0}
+                            role="button"
+                            className="btn btn-ghost btn-circle avatar"
+                        >
+                            <div className="w-10 rounded-full">
+                                <img
+                                    alt="Profile"
+                                    src="../src/assets/images/avatar.jpg"
+                                />
+                            </div>
+                        </div>
+                        <ul
+                            tabIndex={0}
+                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                        >
+                            <li>
+                                <a className="justify-between">Profile</a>
+                            </li>
+                            <li>
+                                <a>Settings</a>
+                            </li>
+                            <li>
+                                <a>Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </nav>
     );
