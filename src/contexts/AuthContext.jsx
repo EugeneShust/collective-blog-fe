@@ -14,11 +14,13 @@ export const AuthProvider = ({ children }) => {
     const login = (loginInfo) => {
         setUser(loginInfo.user);
         localStorage.setItem('accessToken', JSON.stringify(loginInfo.token));
+        console.log("Login successful. token:", loginInfo.token, "user:", loginInfo.user);
     };
 
     const logout = () => {
         setUser(null);
         localStorage.removeItem('accessToken');
+        console.log("Logout successful.");
     };
 
     return (
