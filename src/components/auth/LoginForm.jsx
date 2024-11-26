@@ -1,8 +1,8 @@
 import { useState } from 'react';
 // Atomic Design: Auth form components for login and signup forms.
-export const SignUpForm = ({ onSubmit }) => {
+
+export const LoginForm = ({ onSubmit }) => {
     const [formData, setFormData] = useState({
-        name: '',
         email: '',
         password: '',
     });
@@ -13,60 +13,22 @@ export const SignUpForm = ({ onSubmit }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        if (!formData.firstName || !formData.email || !formData.password) {
+        if (!formData.email || !formData.password) {
+            //setError('Please fill in all fields');
             throw new Error('Please fill in all fields');
-            return;
         }
 
         if (!validateEmail(formData.email)) {
+            // setError('No valid email address');
             throw new Error('No valid email address');
-            return;
         }
-        onSubmit({
-            firstName: formData.firstName,
-            lastName: formData.lastName,
-            email: formData.email,
-            password: formData.password,
-        });
+
+        // Pass data to LoginPage
+        onSubmit({ email: formData.email, password: formData.password });
     };
 
     return (
         <form onSubmit={handleSubmit}>
-            <div className="form-control">
-                <label className="label">
-                    <span className="label-text">First Name</span>
-                </label>
-                <input
-                    type="text"
-                    placeholder="First Name"
-                    className="input input-bordered"
-                    value={formData.firstName}
-                    onChange={(e) =>
-                        setFormData({
-                            ...formData,
-                            firstName: e.target.value,
-                        })
-                    }
-                />
-            </div>
-            <div className="form-control">
-                <label className="label">
-                    <span className="label-text">Last Name</span>
-                </label>
-                <input
-                    type="text"
-                    placeholder="Last Name"
-                    className="input input-bordered"
-                    value={formData.lastName}
-                    onChange={(e) =>
-                        setFormData({
-                            ...formData,
-                            lastName: e.target.value,
-                        })
-                    }
-                />
-            </div>
             <div className="form-control">
                 <label className="label">
                     <span className="label-text">Email</span>
@@ -91,7 +53,7 @@ export const SignUpForm = ({ onSubmit }) => {
                 <input
                     type="password"
                     placeholder="password"
-                    className="input input-bordered"
+                    classs="input input-bordered"
                     value={formData.password}
                     onChange={(e) =>
                         setFormData({
@@ -102,7 +64,7 @@ export const SignUpForm = ({ onSubmit }) => {
                 />
             </div>
             <div className="form-control mt-6">
-                <button className="btn btn-primary">Sign Up</button>
+                <button className="btn btn-primary">Login</button>
             </div>
         </form>
     );

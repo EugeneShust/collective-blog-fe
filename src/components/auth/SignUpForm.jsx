@@ -1,25 +1,28 @@
 import { useState } from 'react';
-import { validateEmail } from '../../utils';
 // Atomic Design: Auth form components for login and signup forms.
-export const ProfileForm = ({ data, onSubmit }) => {
+export const SignUpForm = ({ onSubmit }) => {
     const [formData, setFormData] = useState({
-        firstName: data.firstName,
-        lastName: data.lastName,
-        email: data.email,
+        firstName: '',
+        lastName: '',
+        email: '',
         password: '',
     });
 
-    //setFormData(data);
+    const validateEmail = (email) => {
+        return email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("formData:", formData);
+
         if (!formData.firstName || !formData.email || !formData.password) {
             throw new Error('Please fill in all fields');
+            return;
         }
 
         if (!validateEmail(formData.email)) {
             throw new Error('No valid email address');
+            return;
         }
         onSubmit({
             firstName: formData.firstName,
@@ -37,7 +40,7 @@ export const ProfileForm = ({ data, onSubmit }) => {
                 </label>
                 <input
                     type="text"
-                    placeholder="name"
+                    placeholder="first Name"
                     className="input input-bordered"
                     value={formData.firstName}
                     onChange={(e) =>
@@ -54,7 +57,7 @@ export const ProfileForm = ({ data, onSubmit }) => {
                 </label>
                 <input
                     type="text"
-                    placeholder="last name"
+                    placeholder="lastName"
                     className="input input-bordered"
                     value={formData.lastName}
                     onChange={(e) =>
@@ -100,7 +103,7 @@ export const ProfileForm = ({ data, onSubmit }) => {
                 />
             </div>
             <div className="form-control mt-6">
-                <button className="btn btn-primary">Save</button>
+                <button className="btn btn-primary">Sign Up</button>
             </div>
         </form>
     );

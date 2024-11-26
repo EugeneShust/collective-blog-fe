@@ -13,7 +13,7 @@ export const ProfilePage = () => {
         const getData = async () => {
             try {
                 const data = await getProfile();
-                console.log('fetchProfile', data);
+                console.log('fetchProfile2', data);
                 setProfile(data);
             } catch (err) {
                 setError(err.message);
@@ -43,6 +43,7 @@ export const ProfilePage = () => {
 
             if (updatedData.error) throw new Error(updatedData.error);
         } catch (err) {
+            console.log(err);
             setError('Connection error. Please try again.');
         }
     }
@@ -68,19 +69,21 @@ export const ProfilePage = () => {
     return (
         <div className="hero bg-base-200 min-h-screen">
             <div className="hero-content flex-col lg:flex-row">
-                <div className="avatar">
-                    <div className="w-24 rounded">
-                        <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-                    </div>
-                </div>
                 {!editMode ? (
                     <div>
-                        <h1 className="text-5xl font-bold">{profile.name}</h1>
-                        <p className="py-6">{profile.id}</p>
-                        <p className="py-6">{profile.email}</p>
-                        <p className="py-6">{profile.isActive}</p>
-                        <p className="py-6">{profile.createdAt}</p>
-                        <p className="py-6">{profile.updatedAt}</p>
+                        <div className="avatar">
+                            <div className="w-24 rounded">
+                                <img src="../src/assets/images/avatar.jpg" />
+                            </div>
+                        </div>
+                        <h1 className="text-5xl font-bold">
+                            {profile.firstName + ' ' + profile.lastName}
+                        </h1>
+                        <p className="py-6">Id: {profile.id}</p>
+                        <p className="py-6">E-Mail: {profile.email}</p>
+                        <p className="py-6">isActive: {profile.isActive}</p>
+                        <p className="py-6">createdAt: {profile.createdAt}</p>
+                        <p className="py-6">updatedAt: {profile.updatedAt}</p>
                         <button
                             className="btn btn-primary"
                             onClick={() => setEditMode(true)}

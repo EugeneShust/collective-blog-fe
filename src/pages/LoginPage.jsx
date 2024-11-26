@@ -17,16 +17,10 @@ export const LoginPage = () => {
             console.log(loginInfo);
 
             if (loginInfo.error) throw new Error(loginInfo.error);
-
+            console.log(loginInfo.error);
+            
             login(loginInfo);
             navigate('/');
-
-            // localStorage.setItem('userId', data.userId);
-            // localStorage.setItem('userEmail', data.email);
-
-            // if (data.role) {
-            //     localStorage.setItem('userRole', data.role);
-            // }
         } catch (err) {
             console.error(err.message);
             setError(`Connection error. Error code${err.message}`);

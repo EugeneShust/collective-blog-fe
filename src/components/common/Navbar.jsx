@@ -9,7 +9,6 @@ export function Navbar() {
                         <li className="btn btn-ghost text-xl">
                             the awesome blogpost page
                         </li>
-                    </Link>
                 </div>
                 <div className="flex-none gap-4">
                     <Link to="/create-post">

@@ -1,25 +1,47 @@
 // Contains all application routes.
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { MainLayout } from './components';
-import { HomePage, CreatePostPage } from './pages';
-import { PostsProvider } from './contexts';
+import {
+    HomePage,
+    CreatePostPage,
+    LoginPage,
+    SignUpPage,
+    ProfilePage,
+} from './pages';
+import { AuthProvider, PostsProvider } from './contexts';
 
 const router = createBrowserRouter([
     {
         path: '',
         element: (
-            <PostsProvider>
+            <AuthProvider>
                 <MainLayout />
-            </PostsProvider>
+            </AuthProvider>
         ),
         children: [
             {
                 index: true,
-                element: <HomePage />,
+                element: (
+                    <PostsProvider>
+                        <HomePage />
+                    </PostsProvider>
+                ),
             },
             {
                 path: '/create-post',
                 element: <CreatePostPage />,
+            },
+            {
+                path: '/login',
+                element: <LoginPage />,
+            },
+            {
+                path: '/signup',
+                element: <SignUpPage />,
+            },
+            {
+                path: '/profile',
+                element: <ProfilePage />,
             },
         ],
     },
