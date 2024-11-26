@@ -3,7 +3,7 @@
 import { fetchWithoutAuth, fetchWithAuth } from '../api';
 
 async function registerUser(data) {
-    return await fetchWithoutAuth('/users', {
+    return await fetchWithoutAuth('/auth/signup', {
         method: 'POST',
         body: JSON.stringify(data),
     });
@@ -17,11 +17,11 @@ async function loginUser(data) {
 }
 
 async function getProfile() {
-    return await fetchWithAuth('/auth/profile');
+    return await fetchWithAuth('/users/profile');
 }
 
 async function updateProfile(id, data) {
-    return await fetchWithAuth(`/users/${id}`, {
+    return await fetchWithAuth(`/users/profile`, {
         method: 'PUT',
         body: JSON.stringify(data),
     });

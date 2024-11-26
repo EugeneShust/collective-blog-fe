@@ -1,2 +1,2 @@
 // Configuration file for API URL and other settings.
-export const API_URL = 'localhost:3000';
+export const API_URL = 'http://localhost:3001';
