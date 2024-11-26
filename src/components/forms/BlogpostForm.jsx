@@ -4,7 +4,7 @@ export const BlogpostForm = ({ onSubmit }) => {
     const [title, setTitle] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const [content, setContent] = useState('');
-
+    console.log(onSubmit);
     const handleSubmit = (e) => {
         e.preventDefault();
         onSubmit({ title, imageUrl, content });
@@ -16,7 +16,7 @@ export const BlogpostForm = ({ onSubmit }) => {
     return (
         <>
             <div className="max-w-3xl mx-auto">
-                <form className="flex flex-col gap-4">
+                <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
                     <div className="flex flex-row gap-12">
                         <label className="form-control w-full max-w-80">
                             <div className="label">
@@ -59,10 +59,7 @@ export const BlogpostForm = ({ onSubmit }) => {
                         <div className="label"></div>
                     </label>
                     <div className="flex flex-row-reverse">
-                        <button
-                            className="btn btn-success"
-                            onClick={handleSubmit}
-                        >
+                        <button className="btn btn-success">
                             Save blogpost
                         </button>
                     </div>
