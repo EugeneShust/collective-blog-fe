@@ -1,4 +1,5 @@
-import { API_URL } from '../config';
+import { API_URL } from '../config.js';
+import { JOCHEN_API_URL } from '../config.js';
 // Facade pattern: Provides a simplified interface for HTTP requests that do not require authentication.
 
 export const fetchWithoutAuth = async (url, options = {}) => {
@@ -9,7 +10,7 @@ export const fetchWithoutAuth = async (url, options = {}) => {
 
     console.log('Request:', url, options.body ? '\nBody:' + options.body : '');
 
-    const response = await fetch(`${API_URL}${url}`, options);
+    const response = await fetch(`${JOCHEN_API_URL}${url}`, options);
 
     if (!response.ok) {
         const errorText = await response.text();
