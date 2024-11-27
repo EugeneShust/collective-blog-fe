@@ -1,13 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BlogpostForm } from '../components/forms/blogpostForm.jsx';
+import { createBlogpost } from '../services/postService.js';
 
 const CreatePostPage = () => {
     const navigate = useNavigate();
 
-    const handleFormSubmit = async (formData) => {
-        const data = // service function
-            console.log('Form submitted:', formData);
+    const handleFormSubmit = async (post) => {
+        const data = createBlogpost(post);
+        console.log('Form submitted:', post);
         console.log('Created post:', data);
         navigate('/');
     };
