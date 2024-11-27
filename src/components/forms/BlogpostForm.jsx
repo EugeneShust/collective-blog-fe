@@ -7,10 +7,9 @@ export const BlogpostForm = ({ onSubmit }) => {
     console.log(onSubmit);
     const handleSubmit = (e) => {
         e.preventDefault();
+        // Validate input
+        // console.log(e);
         onSubmit({ title, imageUrl, content });
-        setTitle('');
-        setImageUrl('');
-        setContent('');
     };
 
     return (
@@ -29,6 +28,9 @@ export const BlogpostForm = ({ onSubmit }) => {
                                 placeholder="The title of your post"
                                 className="input input-bordered w-full max-w-80"
                                 required
+                                onChange={(onChangeEvent) =>
+                                    setTitle(onChangeEvent.target.value)
+                                }
                             />
                             <div className="label"></div>
                         </label>
@@ -43,6 +45,9 @@ export const BlogpostForm = ({ onSubmit }) => {
                                 placeholder="Link your image here"
                                 className="input input-bordered w-full max-w-xs"
                                 required
+                                onChange={(onChangeEvent) =>
+                                    setImageUrl(onChangeEvent.target.value)
+                                }
                             />
                             <div className="label"></div>
                         </label>
@@ -55,6 +60,9 @@ export const BlogpostForm = ({ onSubmit }) => {
                             className="textarea textarea-bordered h-36"
                             placeholder="Type your blogpost here"
                             required
+                            onChange={(onChangeEvent) =>
+                                setContent(onChangeEvent.target.value)
+                            }
                         ></textarea>
                         <div className="label"></div>
                     </label>
