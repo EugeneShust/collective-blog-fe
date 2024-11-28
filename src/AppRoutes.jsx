@@ -29,7 +29,11 @@ const router = createBrowserRouter([
             },
             {
                 path: '/create-post',
-                element: <CreatePostPage />,
+                element: (
+                    <PostsProvider>
+                        <CreatePostPage />
+                    </PostsProvider>
+                ),
             },
             {
                 path: '/login',
