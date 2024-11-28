@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { getProfile } from '../services';
 
 export const MainLayout = () => {
-    const { updateProfile } = useAuth();
+    const { updateProfile, logout } = useAuth();
 
     useEffect(() => {
         const getData = async () => {
@@ -20,6 +20,7 @@ export const MainLayout = () => {
                 console.log('MainLayout.fetchProfile', data);
                 updateProfile(data);
             } catch (err) {
+                logout();
                 console.error(err);
             }
         };

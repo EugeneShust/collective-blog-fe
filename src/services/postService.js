@@ -1,7 +1,15 @@
 // Service Layer: Posts manages API requests for posts.
 
 import { fetchWithAuth } from '../api/index';
+import { fetchWithoutAuth } from '../api/index';
 
+async function getAllPosts() {
+    return await fetchWithoutAuth('/posts', {
+        method: 'GET',
+    });
+}
+
+export { getAllPosts };
 // Backend API:
 // GET /posts
 // Description: Retrieve all posts.
