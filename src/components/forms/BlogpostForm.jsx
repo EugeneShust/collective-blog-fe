@@ -1,3 +1,5 @@
+// Parent component: CreatePostPage.jsx
+
 import React, { useState } from 'react';
 
 export const BlogpostForm = ({ onSubmit }) => {

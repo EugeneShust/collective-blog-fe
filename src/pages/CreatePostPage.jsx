@@ -18,7 +18,8 @@ const CreatePostPage = () => {
             <div className="divider my-8">
                 <h1 className="text-3xl">Create a new Post</h1>
             </div>
-            <BlogpostForm onSubmit={handleFormSubmit} />
+            {/* Child component of CreatePostPage */}
+            <BlogpostForm onSubmit={handleFormSubmit} />{' '}
             <div className="divider my-8"></div>
         </div>
     );
