@@ -2,15 +2,23 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BlogpostForm } from '../components/forms/blogpostForm.jsx';
 import { createBlogpost } from '../services/postService.js';
+    // Import here post -context.
 
 const CreatePostPage = () => {
+    // Initialize post -context here.
     const navigate = useNavigate();
 
     const handleFormSubmit = async (post) => {
+        console.log('Form pass data to parent:', post);
+
         const data = createBlogpost(post);
-        console.log('Form submitted:', post);
+        
         console.log('Created post:', data);
+        
+        //Cause the necessary function of post-context.
+        
         navigate('/');
+        // END!
     };
 
     return (
