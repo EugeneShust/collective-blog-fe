@@ -4,14 +4,14 @@ import React, { useState } from 'react';
 
 export const BlogpostForm = ({ onSubmit }) => {
     const [title, setTitle] = useState('');
-    const [imageUrl, setImageUrl] = useState('');
+    const [cover, setCover] = useState('');
     const [content, setContent] = useState('');
     console.log(onSubmit);
     const handleSubmit = (e) => {
         e.preventDefault();
         // Validate input
         // console.log(e);
-        onSubmit({ title, imageUrl, content });
+        onSubmit({ title, cover, content });
     };
 
     return (
@@ -48,7 +48,7 @@ export const BlogpostForm = ({ onSubmit }) => {
                                 className="input input-bordered w-full max-w-xs"
                                 required
                                 onChange={(onChangeEvent) =>
-                                    setImageUrl(onChangeEvent.target.value)
+                                    setCover(onChangeEvent.target.value)
                                 }
                             />
                             <div className="label"></div>
