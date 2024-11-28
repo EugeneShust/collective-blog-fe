@@ -1,22 +1,23 @@
+// Parent component: CreatePostPage.jsx
+
 import React, { useState } from 'react';
 
 export const BlogpostForm = ({ onSubmit }) => {
     const [title, setTitle] = useState('');
-    const [imageUrl, setImageUrl] = useState('');
+    const [cover, setCover] = useState('');
     const [content, setContent] = useState('');
-
+    console.log(onSubmit);
     const handleSubmit = (e) => {
         e.preventDefault();
-        onSubmit({ title, imageUrl, content });
-        setTitle('');
-        setImageUrl('');
-        setContent('');
+        // Validate input
+        // console.log(e);
+        onSubmit({ title, cover, content });
     };
 
     return (
         <>
             <div className="max-w-3xl mx-auto">
-                <form className="flex flex-col gap-4">
+                <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
                     <div className="flex flex-row gap-12">
                         <label className="form-control w-full max-w-80">
                             <div className="label">
@@ -29,6 +30,9 @@ export const BlogpostForm = ({ onSubmit }) => {
                                 placeholder="The title of your post"
                                 className="input input-bordered w-full max-w-80"
                                 required
+                                onChange={(onChangeEvent) =>
+                                    setTitle(onChangeEvent.target.value)
+                                }
                             />
                             <div className="label"></div>
                         </label>
@@ -43,6 +47,9 @@ export const BlogpostForm = ({ onSubmit }) => {
                                 placeholder="Link your image here"
                                 className="input input-bordered w-full max-w-xs"
                                 required
+                                onChange={(onChangeEvent) =>
+                                    setCover(onChangeEvent.target.value)
+                                }
                             />
                             <div className="label"></div>
                         </label>
@@ -55,14 +62,14 @@ export const BlogpostForm = ({ onSubmit }) => {
                             className="textarea textarea-bordered h-36"
                             placeholder="Type your blogpost here"
                             required
+                            onChange={(onChangeEvent) =>
+                                setContent(onChangeEvent.target.value)
+                            }
                         ></textarea>
                         <div className="label"></div>
                     </label>
                     <div className="flex flex-row-reverse">
-                        <button
-                            className="btn btn-success"
-                            onClick={handleSubmit}
-                        >
+                        <button className="btn btn-success">
                             Save blogpost
                         </button>
                     </div>
